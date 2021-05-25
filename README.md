@@ -25,8 +25,13 @@ PATH=%PATH%;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Too
 
 
 ## 第五步 ##
-然后安装GraalVM插件 命令
+然后安装GraalVM插件
 命令行：
-gu install native-image
-gu list
+* gu install native-image
+* gu list
+
 ![gu list](./gu_list.png)
+
+
+## spring boot 2.4 增加的插件 ##
+见 pom: native-image-maven-plugin

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author ZhangShaowei on 2021/5/25 10:16
+ * @author Mars on 2021/5/25 10:16
  */
 @RestController
 @SpringBootApplication(proxyBeanMethods = false)
