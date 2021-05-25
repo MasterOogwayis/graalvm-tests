@@ -35,3 +35,12 @@ PATH=%PATH%;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Too
 
 ## spring boot 2.4 增加的插件 ##
 见 pom: native-image-maven-plugin
+
+
+
+
+
+# 相关文档 #
+
+* [spring native](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/#getting-started-native-image)
+* [spring blog](https://spring.io/blog/2020/06/16/spring-tips-spring-and-graalvm-pt-2)
