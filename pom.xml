@@ -48,6 +48,11 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.graalvm.nativeimage</groupId>
+                    <artifactId>native-image-maven-plugin</artifactId>
+                    <version>21.0.0.2</version>
+                </plugin>
+                <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring-boot.version}</version>
