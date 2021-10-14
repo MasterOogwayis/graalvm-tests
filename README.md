@@ -39,7 +39,7 @@ PATH=%PATH%;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Too
 
 ## command ##
 ```text
-mvn -Pnative package
+mvn clean package -P native
 ```
 
 # 相关文档 #

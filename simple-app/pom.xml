@@ -121,11 +121,23 @@
                         </executions>
                     </plugin>
 
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <image>
+                                <builder>${builder}</builder>
+                                <env>
+                                    <BP_BOOT_NATIVE_IMAGE>true</BP_BOOT_NATIVE_IMAGE>
+                                </env>
+                            </image>
+                        </configuration>
+                    </plugin>
+
                 </plugins>
             </build>
         </profile>
     </profiles>
-
 
 
 </project>
