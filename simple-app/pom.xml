@@ -73,7 +73,6 @@
         </plugins>
     </build>
 
-    <!-- 增加 Native 包版配置-->
     <profiles>
         <profile>
             <id>native</id>
@@ -122,10 +121,6 @@
                         </executions>
                     </plugin>
 
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                    </plugin>
                 </plugins>
             </build>
         </profile>

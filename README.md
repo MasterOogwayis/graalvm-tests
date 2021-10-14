@@ -37,8 +37,10 @@ PATH=%PATH%;D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Too
 见 pom: native-image-maven-plugin
 
 
-
-
+## command ##
+```text
+mvn -Pnative package
+```
 
 # 相关文档 #
 
