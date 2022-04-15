@@ -29,7 +29,6 @@
         <dependency>
             <groupId>org.springframework.experimental</groupId>
             <artifactId>spring-native</artifactId>
-            <version>0.9.3-SNAPSHOT</version>
         </dependency>
 
     </dependencies>
@@ -39,14 +38,8 @@
             <plugin>
                 <groupId>org.springframework.experimental</groupId>
                 <artifactId>spring-aot-maven-plugin</artifactId>
-                <version>0.9.3-SNAPSHOT</version>
+                <version>0.11.4</version>
                 <executions>
-                    <execution>
-                        <id>test-generate</id>
-                        <goals>
-                            <goal>test-generate</goal>
-                        </goals>
-                    </execution>
                     <execution>
                         <id>generate</id>
                         <goals>
@@ -60,84 +53,25 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.demo.GraalvmApp</mainClass>
+                    <image>
+                        <builder>paketobuildpacks/builder:tiny</builder>
+                        <env>
+                            <BP_NATIVE_IMAGE>true</BP_NATIVE_IMAGE>
+                        </env>
+                    </image>
                 </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
 
-    <profiles>
-        <profile>
-            <id>native</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.graalvm.nativeimage</groupId>
-                        <artifactId>native-image-maven-plugin</artifactId>
-                        <version>21.1.0</version>
-                        <configuration>
-                            <mainClass>com.demo.GraalvmApp</mainClass>
-                            <skip>false</skip>
-                            <imageName>${project.artifactId}</imageName>
-                            <buildArgs>
-                                --no-fallback
-                                --initialize-at-build-time=org.springframework.boot.context.config.StandardConfigDataLoader
-                                --initialize-at-build-time=org.springframework.boot.context.config.ConfigData
-                                --initialize-at-build-time=org.springframework.boot.context.config.ConfigData$Options
-                                --initialize-at-build-time=org.springframework.boot.context.config.ConfigData$PropertySourceOptions
-                                --initialize-at-build-time=org.springframework.util.unit.DataSize
-                                --initialize-at-build-time=org.slf4j.MDC
-                                --initialize-at-build-time=ch.qos.logback.classic.Level
-                                --initialize-at-build-time=ch.qos.logback.classic.Logger
-                                --initialize-at-build-time=ch.qos.logback.core.util.StatusPrinter
-                                --initialize-at-build-time=ch.qos.logback.core.status.StatusBase
-                                --initialize-at-build-time=ch.qos.logback.core.status.InfoStatus
-                                --initialize-at-build-time=ch.qos.logback.core.spi.AppenderAttachableImpl
-                                --initialize-at-build-time=org.slf4j.LoggerFactory
-                                --initialize-at-build-time=ch.qos.logback.core.util.Loader
-                                --initialize-at-build-time=org.slf4j.impl.StaticLoggerBinder
-                                --initialize-at-build-time=ch.qos.logback.classic.spi.ThrowableProxy
-                                --initialize-at-build-time=ch.qos.logback.core.CoreConstants
-                                --report-unsupported-elements-at-runtime
-                                --allow-incomplete-classpath
-                                -H:+ReportExceptionStackTraces
-                                -J-Xmx4G
-                            </buildArgs>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>native-image</goal>
-                                </goals>
-                                <phase>package</phase>
-                            </execution>
-                        </executions>
-                    </plugin>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-release</id>
+            <name>Spring release</name>
+            <url>https://repo.spring.io/release</url>
+        </pluginRepository>
+    </pluginRepositories>
 
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <image>
-                                <builder>${builder}</builder>
-                                <env>
-                                    <BP_BOOT_NATIVE_IMAGE>true</BP_BOOT_NATIVE_IMAGE>
-                                </env>
-                            </image>
-                        </configuration>
-                    </plugin>
-
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 
 </project>
